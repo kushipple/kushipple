@@ -1,23 +1,26 @@
 ---
-
+const pageTitle = "ブログ";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+    </head>
+
     <body>
         <a href="/">ホーム</a>
         <a href="/about/">概要</a>
         <a href="/blog/">ブログ</a>
-      
-        <h1>kushipple</h1>
-        <h1>ブログ</h1>
+        <h1>{pageTitle}</h1>
         <p>ここには、ブログを投稿します。</p>
-      
-      </body>
+        <ul>
+            <li><a href="/posts/post-1/">記事1</a></li>
+            <li><a href="/posts/post-2/">記事2</a></li>
+            <li><a href="/posts/post-3/">記事3</a></li>
+        </ul>
+    </body>
 </html>
