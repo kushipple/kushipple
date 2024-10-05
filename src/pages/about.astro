@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
-
-const pageTitle = "このブログを書いている人について";
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const identity = {
   firstName: "kushipple.",
@@ -27,31 +26,7 @@ const skillColor = "navy";
 const fontWeight = "bold";
 const textCase = "uppercase";
 ---
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skill {
-    color: var(--skillColor);
-    font-weight: var(--fontWeight);
-    text-transform: var(--textCase);
-      }   
-    </style>
-  </head>
-  <body>
-    <a href="/">ホーム</a>
-    <a href="/about/">概要</a>
-    <a href="/blog/">ブログ</a>
-    <h1>{pageTitle}</h1>
+<BaseLayout pageTitle="概要"/>
     <h2>... そしてkushipple.の新しいサイト"kushipple"について！</h2>
 
     <p>これはkushippleの2番目のページで、自分で作った初めてのページです！</p>
@@ -77,4 +52,8 @@ const textCase = "uppercase";
     
     {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}
   </body>
-</html>
+  <script>
+    import "../scripts/menu.js";
+  </script>
+</BaseLayout>
+
