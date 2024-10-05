@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+const pageTitle = "概要";
 const identity = {
   firstName: "kushipple.",
   country: "日本",
@@ -26,7 +26,7 @@ const skillColor = "navy";
 const fontWeight = "bold";
 const textCase = "uppercase";
 ---
-<BaseLayout pageTitle="概要"/>
+<BaseLayout pageTitle={pageTitle}>
     <h2>... そしてkushipple.の新しいサイト"kushipple"について！</h2>
 
     <p>これはkushippleの2番目のページで、自分で作った初めてのページです！</p>
