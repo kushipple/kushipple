@@ -2,16 +2,32 @@
 import '../styles/global.css';
 import BlogPost from '../components/BlogPost.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const pageTitle = "ブログ";
+
+//microCMS呼び出し
+import { getBlogs } from "../library/microcms";
+const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt"] });
 ---
 <BaseLayout pageTitle={pageTitle}>
         <p>ここには、ブログを投稿します。</p>
         <ul>
             {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
         </ul>
+        <ul>
+            {
+                posts.map((post) => (
+                    <li>
+                        <time datetime={post.publishedAt}>
+                            {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+                        </time>
+                        <a href={`/blog/${post.id}`}>{post.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
         <script>
             import "../scripts/menu.js";
         </script>
 </BaseLayout>
-

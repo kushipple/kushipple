@@ -1,8 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
+
 ---
 <BaseLayout pageTitle="kushipple"/>
-<h2>私の素晴らしいブログのサブタイトル</h2>
+
 <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
+
+<style>
+    main {
+      margin: auto;
+      padding: 1em;
+      max-width: 60ch;
+    }
+  </style>
