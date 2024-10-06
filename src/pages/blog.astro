@@ -8,22 +8,25 @@ const pageTitle = "ブログ";
 
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
-const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt"] });
+const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt","eyecatch"] });
 ---
 <BaseLayout pageTitle={pageTitle}>
         <p>ここには、ブログを投稿します。</p>
         <ul>
-            {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-        </ul>
-        <ul>
             {
                 posts.map((post) => (
-                    <li>
+               
+                        <a href={`/blog/${post.id}`}>{post.title}</a>
+                        <div>
+                            <img
+                           width={240} height={120} src={post.eyecatch.url}
+                           alt=""　
+                            /> 
+                        </div>                       
                         <time datetime={post.publishedAt}>
                             {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
                         </time>
-                        <a href={`/blog/${post.id}`}>{post.title}</a>
-                    </li>
+                       
                 ))
             }
         </ul>
