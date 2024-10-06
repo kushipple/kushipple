@@ -15,7 +15,10 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
         <ul>
             {
                 posts.map((post) => (
-                <ul>
+                    <li>
+                        <time datetime={post.publishedAt}>
+                            {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+                        </time>                       
                         <a href={`/blog/${post.id}`}>{post.title}</a>
                         <div>
                             <img
@@ -23,10 +26,7 @@ const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedA
                            alt=""　
                             /> 
                         </div>                       
-                        <time datetime={post.publishedAt}>
-                            {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-                        </time>
-                    </ul>
+                    </li>
                 ))
             }
         </ul>
