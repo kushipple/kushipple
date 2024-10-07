@@ -2,10 +2,36 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
 
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const pageTitle = "ブログ";
+
+//microCMS呼び出し
+import { getBlogs } from "../library/microcms";
+const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt","eyecatch"] });
 ---
 <BaseLayout pageTitle="kushipple"/>
 
 <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+
+  <p>ブログ一覧</p>
+    <ul>
+      {
+        posts.map((post) => (
+            <li>
+                <time datetime={post.publishedAt}>
+                    {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
+                </time>                       
+                <a href={`/blog/${post.id}`}>{post.title}</a>
+                <div>
+                    <img
+                   width={240} height={120} src={post.eyecatch.url}
+                   alt=""　
+                    /> 
+                </div>                       
+            </li>
+        ))
+    }
+  </ul>
 </BaseLayout>
 
 <style>
