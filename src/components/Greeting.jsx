@@ -8,7 +8,7 @@ export default function Greeting({messages}) {
 
   return (
     <div>
-      <h3>{greeting}！ 訪問いただきありがとうございます！</h3>
+      <h3>{greeting}！ ご訪問いただきありがとうございます！</h3>
       <button onClick={() => setGreeting(randomMessage())}>
         新しい挨拶
       </button>
