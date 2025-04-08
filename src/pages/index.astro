@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
+import { CountryCapitalGreeting } from '../components/Greeting';
 
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const pageTitle = "ブログ";
@@ -8,12 +9,23 @@ const pageTitle = "ブログ";
 //microCMS呼び出し
 import { getBlogs } from "../library/microcms";
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt","eyecatch"] });
+//countriesのデータ
+//国名と首都名のデータを用意
+const countries = [
+  { name: "日本", capital: "東京" },
+  { name: "アメリカ", capital: "ワシントンD.C." },
+  { name: "フランス", capital: "パリ" },
+  { name: "イギリス", capital: "ロンドン" },
+  { name: "ドイツ", capital: "ベルリン" }
+];
 ---
 <BaseLayout pageTitle="kushipple">
   <p>このサイトはAstroを採用しています。</p>
 </BaseLayout>
 
 <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+
+<CountryCapitalGreeting client:load countries={countries} />
 
   <p>ブログ一覧</p>
     <ul>

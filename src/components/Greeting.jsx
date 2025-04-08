@@ -15,3 +15,19 @@ export default function Greeting({messages}) {
     </div>
   );
 }
+
+export function CountryCapitalGreeting({countries}) {
+
+  const randomCountry = () => countries[(Math.floor(Math.random() * countries.length))];
+
+  const [currentCountry, setCurrentCountry] = useState(countries[0]);
+
+  return (
+    <div>
+      <h3>{`国: ${currentCountry.name}, 首都: ${currentCountry.capital}`}！ </h3>
+      <button onClick={() => setCurrentCountry(randomCountry())}>
+        新しい国と首都
+      </button>
+    </div>
+  );
+}
