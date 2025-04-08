@@ -9,7 +9,9 @@ const pageTitle = "ブログ";
 import { getBlogs } from "../library/microcms";
 const { contents: posts } = await getBlogs({ fields: ["id", "title", "publishedAt","eyecatch"] });
 ---
-<BaseLayout pageTitle="kushipple"/>
+<BaseLayout pageTitle="kushipple">
+  <p>このサイトはAstroを採用しています。</p>
+</BaseLayout>
 
 <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 
